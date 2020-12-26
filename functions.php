@@ -22,3 +22,16 @@ function portfolio_features(){
 
 
 add_action('after_theme_loads', 'portfolio_features');
+
+function portfolio_post_types(){
+    register_post_type('project', array(
+        'public' => true,
+        'menu_icon' => 'dashicons-align-right',
+        'labels' => array(
+            'name' => 'Projects'
+        )
+    ));
+}
+
+
+add_action('init', 'portfolio_post_types');

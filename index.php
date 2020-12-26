@@ -35,7 +35,7 @@
         <div class="row-1">
           <div class="card-1">
             <a
-              href="<?php echo site_url('/Just-a-Project#overview') ?>"
+              href="<?php echo site_url('/just-a-project#overview') ?>"
             >
               <img
                 src="http://abwtechnologies.com/images/film-cloud-summary.png"
