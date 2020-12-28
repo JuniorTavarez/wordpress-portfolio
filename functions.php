@@ -16,10 +16,15 @@ function portfolio_files (){
 add_action('wp_enqueue_scripts', 'portfolio_files');
 
 
-function portfolio_features(){
+function portfolio_features (){
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails'); 
+    add_image_size('projectLandscape', 300, 200, false);
+    add_image_size('projectsmall', 260, 160, false);
 }
 
 
-add_action('after_theme_loads', 'portfolio_features');
+add_action('after_setup_theme', 'portfolio_features');
+
+
 

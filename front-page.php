@@ -7,21 +7,43 @@
       <div class="wrapper container">
         <!-- left side -->
         <div class="left-side .u-side">
-          <h2>Who am I...</h2>
+        <?php
+                $who_am_i = new WP_Query(array(
+                 'posts_per_page' => 1,
+                 'post_type' => 'who-am-i',
+                ));
+
+                while($who_am_i->have_posts()){
+                    $who_am_i->the_post(); ?>
+                    
+   
+            <!-- <?php the_post_thumbnail(); ?> -->
+      
+        <!-- <p> <?php  the_content(); ?> </p> -->
+
+        <h2> <?php the_field('who_am_i_heading'); ?></h2>
           <p class="first-p">
-            Hello there! My name is Alan and I'm a Front End Developer
+          <?php the_field('who_am_i_content_top'); ?>
           </p>
           <p class="second-p">
-            Like many other people, I enjoy spending my free time increasing my
+            <!-- Like many other people, I enjoy spending my free time increasing my
             knowledge of Web Development and building new and challenging
-            projects.
+            projects. -->
+            <?php the_field('who_am_i_content'); ?>
           </p>
-          <a href="#"> <p class="button">Find out more</p></a>
+          <a href="#"> <p class="button"> <?php the_field('who_am_i_button'); ?></p></a>
         </div>
         <!-- right side -->
         <div class="right-side .u-side">
-          <img src="http://abwtechnologies.com/images/what-image.png" alt="" />
+        <?php the_post_thumbnail(); ?> 
+        <!-- <img src="http://abwtechnologies.com/images/what-image.png" alt="" /> -->
         </div>
+
+
+
+             <?php  };
+            ?>
+         
       </div>
     </div>
     <!-- WHO AM I ENDS -->
@@ -38,115 +60,26 @@
             <?php
                 $homepageProjects = new WP_Query(array(
                  'posts_per_page' => 8,
-                 'post_type' => 'project'
+                 'post_type' => 'project',
+                 'orderby' => 'date',
+                 'order' => 'DESC'
                 ));
 
                 while($homepageProjects->have_posts()){
                     $homepageProjects->the_post(); ?>
                     
           <div class="card-1">
- <a href="<?php echo site_url('/just-a-project#overview') ?>"
-            >
-              <img
+ <a href="<?php the_permalink() ?>#overview">
+              <!-- <img
                 src="http://abwtechnologies.com/images/film-cloud-summary.png"
                 alt=""
-            /></a>
-         <?php the_content(); ?>
+            /> -->
+            <?php the_post_thumbnail(); ?>
+            </a>
+        <p> <?php echo get_the_excerpt(); ?> </p>
                </div>
-        
              <?php  };
             ?>
-              
-          
-          <!-- <div class="card-1">
-            <a
-              href="https://juniortavarez.github.io/inprogress-portfolio/portfolio#overview"
-            >
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              Browse your favorite Movies, TV shows and actors. Share, save and
-              rate your favorite ones...
-            </p>
-          </div>
-          <div class="card-1">
-            <a
-              href="https://juniortavarez.github.io/inprogress-portfolio/portfolio#overview"
-            >
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              Browse and favorite thousands of recipes for ingredients and
-              instructions...
-            </p>
-          </div>
-          <div class="card-1">
-            <a
-              href="https://juniortavarez.github.io/inprogress-portfolio/portfolio"
-            >
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              Post a Dash treasury proposal to raise pre-proposal funding and
-              gain popularity...
-            </p>
-          </div>
-          <div class="card-1">
-            <a
-              href="https://juniortavarez.github.io/inprogress-portfolio/portfolio"
-            >
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              Want to invest in cryptocurrency, but you are not sure where to
-              start? Cryptocurrency consulting...
-            </p>
-          </div>
-          <div class="card-1">
-            <a
-              href="https://juniortavarez.github.io/inprogress-portfolio/portfolio"
-            >
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              SEO Agency who drives traffic to businesses by redesigning the
-              user interface and user experience...
-            </p>
-          </div>
-          <div class="card-1">
-            <a
-              href="https://juniortavarez.github.io/inprogress-portfolio/portfolio"
-            >
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              A gym chain that develops fitness routines with the most
-              accomplished athletes in the industry...
-            </p>
-          </div>
-          <div class="card-1">
-            <a href="/portfolio.html#overview">
-              <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /></a>
-            <p>
-              Set your online business on autopilot with Digital Elite. They
-              host, manage and promote your business...
-            </p>
-          </div> -->
           </div>
       </div>
     </div>

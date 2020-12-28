@@ -47,24 +47,38 @@
       <div class="hero-section">
         <div class="container-top wrapper">
           <!-- left side -->
+          <?php
+                $header = new WP_Query(array(
+                 'posts_per_page' => 1,
+                 'post_type' => 'header',
+                ));
+
+                while($header->have_posts()){
+                    $header->the_post(); ?>
+                    
+   
+            <!-- <?php the_post_thumbnail(); ?> -->
+      
+        <!-- <p> <?php  the_content(); ?> </p> -->
+             <?php  };
+            ?>
           <div class="left-side">
-            <img src="http://abwtechnologies.com/images/logo.png" alt="" />
 
-            <h1>PEOPLE WORK BETTER TOGETHER</h1>
+          <?php the_post_thumbnail(); ?>
+            <!-- <img src="http://abwtechnologies.com/images/logo.png" alt="" /> -->
 
-            <p>
-              The power of one, if fearless and focused, is formidable, but the
-              power of many working together is better.
-              <span class="name"> - Gloria Macapagal Arroyo </span>
-            </p>
+            <h1><?php echo get_the_excerpt();?></h1>
+            <!-- <h1>PEOPLE WORK BETTER TOGETHER</h1> -->
+            
+            <?php  the_content(); ?>
+         
           </div>
           <!-- right side -->
           <div class="right-side">
             <p>
-              Want to work with me? I'm always looking for new projects or a
-              coding buddy. Don't be shy, get in touch!
+              <?php the_field('header_right'); ?>
             </p>
-            <a href="#"> <div class="button">Get in touch</div></a>
+            <a href="#"> <div class="button"> <?php the_field('header_button'); ?></div></a>
           </div>
         </div>
         <a href="#who-am-i"> <i class="fas fa-chevron-down"></i></a>
