@@ -52,6 +52,9 @@ buttons.forEach((button, index) => {
 const leftSide = document.querySelector('#who-am-i .wrapper .left-side');
 const rightSide = document.querySelector('#who-am-i .wrapper .right-side');
 
+// Technological Skills
+const techSkills = document.querySelector('#technological-skills .wrapper');
+
 // My latest work
 const workHeading = document.querySelector('#my-latest-work .heading');
 const cards = document.querySelectorAll('#my-latest-work .card-1');
@@ -88,6 +91,14 @@ function checkBoxes() {
   // if (workHeading.classList.contains('move-up')) {
   //   console.log('heyyy');
   // }
+
+  // technological-Skills
+  const boxSkills = techSkills.getBoundingClientRect().top;
+  if (boxSkills < triggerBottom) {
+    techSkills.classList.add('fade');
+  } else {
+    techSkills.classList.remove('fade');
+  }
 
   const boxWorkHeading = workHeading.getBoundingClientRect().top;
 

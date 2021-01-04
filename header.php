@@ -23,11 +23,11 @@
           <ul class="main-nav">
             <li><a href="#who-am-i">About Me</a></li>
             <li><a href="#my-latest-work">Projects</a></li>
-            <li><a href="#connect">Connect With Me</a></li>
+            <!-- <li><a href="#connect">Connect With Me</a></li> -->
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#footer">Contact</a></li>
             <li>
-              <a href="#">Resume <i class="fas fa-download"></i></a>
+              <!-- <a href="#">Resume <i class="fas fa-download"></i></a> -->
             </li>
           </ul>
           <ul class="mobile-nav u-display-none">
@@ -57,9 +57,8 @@
                     $header->the_post(); ?>
                     
    
-            <!-- <?php the_post_thumbnail(); ?> -->
-      
-        <!-- <p> <?php  the_content(); ?> </p> -->
+          
+        <!-- <p> <?php the_field('header_left'); ?> </p> -->
              <?php  };
             ?>
           <div class="left-side">
@@ -67,10 +66,10 @@
           <?php the_post_thumbnail(); ?>
             <!-- <img src="http://abwtechnologies.com/images/logo.png" alt="" /> -->
 
-            <h1><?php echo get_the_excerpt();?></h1>
+            <h1><?php the_field('header_left'); ?></h1>
             <!-- <h1>PEOPLE WORK BETTER TOGETHER</h1> -->
             
-            <?php  the_content(); ?>
+            <p><?php the_field('left_content'); ?></p>
          
           </div>
           <!-- right side -->

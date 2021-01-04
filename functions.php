@@ -26,5 +26,3 @@ function portfolio_features (){
 
 add_action('after_setup_theme', 'portfolio_features');
 
-
-

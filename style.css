@@ -457,15 +457,15 @@ body {
   margin-left: 1.5rem;
 }
 @media only screen and (max-width: 56.25em) {
-  #header .nav-bar .nav .main-nav li {
-    margin-right: 0;
+  #header .nav-bar .nav .main-nav li:not(:last-child) {
+    /* margin-right: 0; */
   }
   #header .nav-bar .nav .main-nav li:not(:first-child) {
     margin-left: 1.5rem;
   }
-  #header .nav-bar .nav .main-nav li:nth-child(4) {
+  /* #header .nav-bar .nav .main-nav li:nth-child(4) {
     display: none;
-  }
+  } */
 }
 #header .nav-bar .nav .main-nav li a {
   font-size: 1.6rem;
@@ -729,7 +729,7 @@ body {
 }
 
 #who-am-i {
-  background: #e7e7e7;
+  /* background: #e7e7e7; */
   padding: 10rem 0;
 }
 @media only screen and (max-width: 37.5em) {
@@ -977,6 +977,9 @@ body {
   justify-content: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
 }
 #technological-skills .wrapper h2 {
   max-width: 32rem;

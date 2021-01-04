@@ -3,7 +3,7 @@
 
 
     <!-- WHO AM I BEGGINS -->
-    <div id="who-am-i">
+    <div id="who-am-i" style="background: white !important;">
       <div class="wrapper container">
         <!-- left side -->
         <div class="left-side .u-side">
@@ -47,83 +47,60 @@
       </div>
     </div>
     <!-- WHO AM I ENDS -->
-    <!-- My Latest Work -->
-    <div id="my-latest-work">
-      <div class="container">
-        <div class="heading">
-          <h2>My Latest Work</h2>
-          <p>Some of my greatest and latest projects.</p>
-        </div>
-        <div class="row-1">
-           
-            <!-- php will go here -->
-            <?php
-                $homepageProjects = new WP_Query(array(
-                 'posts_per_page' => 8,
-                 'post_type' => 'project',
-                 'orderby' => 'date',
-                 'order' => 'DESC'
-                ));
-
-                while($homepageProjects->have_posts()){
-                    $homepageProjects->the_post(); ?>
-                    
-          <div class="card-1">
- <a href="<?php the_permalink() ?>#overview">
-              <!-- <img
-                src="http://abwtechnologies.com/images/film-cloud-summary.png"
-                alt=""
-            /> -->
-            <?php the_post_thumbnail(); ?>
-            </a>
-        <p> <?php echo get_the_excerpt(); ?> </p>
-               </div>
-             <?php  };
-            ?>
-          </div>
-      </div>
-    </div>
-    <!-- My Latest Work ENDS -->
+  
     <!-- Technological Skills -->
-    <div id="technological-skills">
+    <div id="technological-skills" >
+
+                    
       <div class="container">
         <div class="wrapper">
-          <h2>Technological Skills</h2>
+        <?php
+                $skillsContent = new WP_Query(array(
+                 'posts_per_page' => 1,
+                 'post_type' => 'technological-skills',
+                ));
+
+                while($skillsContent->have_posts()){
+                    $skillsContent->the_post(); ?>
+
+          <h2><?php the_field('header'); ?></h2>
           <p class="main-paragraph">
-            I always enjoy learning new things. Especially the technologies that
-            make your company special.
+          <?php the_field('content');?>
           </p>
+                
+    
+          
           <div class="flex">
-            <!-- <span class="html"> -->
-            <p>Semantic HTML5</p>
-            <p>Responsive CSS3</p>
-            <p>Interactive JavaScript</p>
-            <!-- </span> -->
-            <!-- <span class="sass"> -->
-            <p>Sass</p>
-            <p>jQuery</p>
-            <p>Bootstrap</p>
-            <!-- </span> -->
-            <!-- <span class="react"> -->
-            <p>React</p>
-            <p>Redux</p>
-            <!-- </span> -->
-            <!-- <span class="wordpress"> -->
-            <p>Wordpress</p>
-            <p>git</p>
-            <p>github</p>
-            <p>Problem Solver</p>
-            <!-- </span> -->
-            <!-- <span class="transform"> -->
-            <p>Transform PSD / Wireframes into web applications</p>
-            <!-- </span> -->
+
+          <?php 
+                       
+              $fields = get_fields();
+
+               
+                if( $fields ): ?>
+              
+                  <?php foreach( $fields as $name => $value ): ?>
+                    <?php
+                    
+                    if(strpos($name, 'skill') !== false): {?>
+                  <p><?php echo $value?></p>
+                    
+                   <?php } endif; ?> 
+
+                  <?php endforeach; ?>
+          
+              <?php endif; ?> 
+      
           </div>
+      <?php  };
+            ?>
         </div>
       </div>
+  
     </div>
     <!-- Technological Skills Ends -->
     <!-- Connect With me -->
-    <div id="connect">
+    <!-- <div id="connect">
       <div class="container wrapper">
         <div class="left-side">
           <h2>Connect with me:</h2>
@@ -155,25 +132,71 @@
           </ul>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Connect With me ends -->
+      <!-- My Latest Work PROJECTS--> 
+      <div id="my-latest-work" >
+      <div class="container">
+        <div class="heading">
+          <h2>My Latest Work</h2>
+          <p>Some of my greatest and latest projects.</p>
+        </div>
+        <div class="row-1">
+           
+            <!-- php will go here -->
+            <?php
+                $homepageProjects = new WP_Query(array(
+                 'posts_per_page' => 8,
+                 'post_type' => 'project',
+                 'orderby' => 'date',
+                 'order' => 'DESC'
+                ));
+
+                while($homepageProjects->have_posts()){
+                    $homepageProjects->the_post(); ?>
+                    
+          <div class="card-1">
+ <a href="<?php the_permalink() ?> #overview">
+              <!-- <img
+                src="http://abwtechnologies.com/images/film-cloud-summary.png"
+                alt=""
+            /> -->
+            <?php the_post_thumbnail(); ?>
+            </a>
+        <p> <?php echo get_the_excerpt(); ?> </p>
+               </div>
+             <?php  };
+            ?>
+          </div>
+      </div>
+    </div>
+    <!-- My Latest Work ENDS -->
     <!-- Why work with me -->
     <div id="why-work-with-me">
       <div class="container wrapper">
         <div class="top">
+          <?php
+                $whyWorkWithMe = new WP_Query(array(
+                 'posts_per_page' => 3,
+                 'post_type' => 'why-work-with-me',
+                ));
+
+              ?>
+                    
           <h2>Why work with me?</h2>
           <p>There are many advantages to working with me. Here are a few:</p>
         </div>
         <div class="info-section">
+          <?php while($whyWorkWithMe->have_posts()){
+                    $whyWorkWithMe->the_post(); ?>
           <div class="card">
-            <div><i class="fas fa-code"></i></div>
-            <h3>Passionate About development</h3>
+            <div><i class="<?php the_field('icon')?>"></i></div>
+            <h3><?php the_field('heading')?></h3>
             <p>
-              Big believer in the fact that the greatest work is done by
-              passionate people.
+            <?php the_field('p')?>
             </p>
           </div>
-          <div class="card">
+          <!-- <div class="card">
             <div><i class="fab fa-leanpub"></i></div>
             <h3>Quick learner</h3>
             <p>
@@ -188,8 +211,10 @@
               Always excited to learn new things. The most valuable thing I can
               provide to your company is the ability to be molded to your stack.
             </p>
-          </div>
+          </div> -->
+          <?php }?>
         </div>
+  
       </div>
     </div>
     <!-- Why work with me ends -->
